@@ -4,7 +4,7 @@ current_milestone_id: M01
 highest_sprint_in_milestone: S02
 current_sprint_id: S01
 status: active
-last_updated: 2025-06-07 02:52
+last_updated: 2025-06-07 03:02
 ---
 
 # Project Manifest: Kiln AI
@@ -27,21 +27,22 @@ This project follows a milestone-based development approach with structured requ
 ## 2. Current Focus
 
 - **Milestone:** M01 - Linux AppImage Support
-- **Sprint:** S01 - Research and Build Process Changes
+- **Sprint:** S01 - Research and Build Foundation
 
 ## 3. Sprints in Current Milestone
 
-### S01 Research and Build Foundation (🚧 IN PROGRESS)
+### S01 Research and Build Foundation (📋 PLANNED)
 
-🚧 Complete AppImage-builder and PyInstaller research (R01)
+📋 Complete AppImage-builder and PyInstaller research (R01)
 📋 Modify Linux build process to use --onedir (R02)
-📋 Create initial AppImage recipe configuration (R03)
+📋 Establish technical foundation for AppImage support
 
-### S02 Integration and Deployment (📋 PLANNED)
+### S02 AppImage Integration and Deployment (📋 PLANNED)
 
+📋 Create AppImage recipe configuration (R03)
 📋 Extend build script with AppImage support (R04)
 📋 Update CI/CD pipeline for automated builds (R05)
-📋 Testing and validation across Linux distributions
+📋 Test across multiple Linux distributions
 
 ## 4. Key Documentation
 

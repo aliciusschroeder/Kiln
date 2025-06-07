@@ -4,6 +4,8 @@
 
 ### 1.1 AppImage Documentation to Read
 
+(located at /contributing/appimage-builder-docs/)
+
 **Essential (Must Read):**
 
 - **PyQt5 application** - This is your closest match. Even though Kiln uses Tkinter not PyQt, it's still a Python GUI app and covers:
@@ -25,6 +27,8 @@
 - **Setup Helpers** (Advanced Topics) - For installation automation
 
 ## 1.2 PyInstaller Documentation to Read
+
+(located at /contributing/pyinstaller-doc/)
 
 **Critical (Must Read):**
 
