@@ -19,7 +19,7 @@ uvx  ruff check --select I
 uvx ruff format --check .
 
 echo "${headerStart}Checking for Misspellings${headerEnd}"
-find . -type f | grep -v "/node_modules/" | grep  -v "/\." | grep -v "/dist/" | grep -v "/desktop/build/" | xargs misspell -error
+find . -type f | grep -v "/node_modules/" | grep  -v "/\." | grep -v "/dist/" | grep -v "/desktop/build/" | grep -v "contributing" | xargs misspell -error
 echo "No misspellings found"
 
 

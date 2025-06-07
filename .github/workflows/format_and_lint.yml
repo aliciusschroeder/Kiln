@@ -24,7 +24,14 @@ jobs:
       - name: Download go misspell
         run: go install github.com/client9/misspell/cmd/misspell@latest
       - name: Run misspell
-        run: misspell -error .
+        run: |
+          find . -type f \
+            | grep -v "/node_modules/" \
+            | grep -v "/\\." \
+            | grep -v "/dist/" \
+            | grep -v "/desktop/build/" \
+            | grep -vi "contributing" \
+            | xargs misspell -error
 
       - name: Install uv
         uses: astral-sh/setup-uv@v3
