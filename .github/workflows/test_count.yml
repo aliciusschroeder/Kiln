@@ -9,6 +9,8 @@ jobs:
   count_tests:
     name: Count Tests
     runs-on: ubuntu-latest
+    env:
+      GIST_SECRET: ${{ secrets.GIST_SECRET }}
 
     steps:
       - uses: actions/checkout@v4
@@ -48,14 +50,19 @@ jobs:
           echo "TOTAL_TEST_COUNT=$TOTAL_TEST_COUNT" >> $GITHUB_ENV
 
       - name: Create test count badge
+        if: env.GIST_SECRET
         uses: schneegans/dynamic-badges-action@v1.7.0
         with:
-          auth: ${{ secrets.GIST_SECRET }}
+          auth: ${{ env.GIST_SECRET }}
           gistID: 57742c1b1b60d597a6aba5d5148d728e
           filename: test_count_kiln.json
           label: Test Count
           message: ${{ env.TOTAL_TEST_COUNT }}
           color: brightgreen
+
+      - name: Skip test count badge creation
+        if: ${{ !env.GIST_SECRET }}
+        run: echo "GIST_SECRET not set. Skipping test count badge creation."
 
       - name: Run library coverage
         # n0 disables parallel execution
@@ -65,11 +72,16 @@ jobs:
           echo "TOTAL_LIB_COVERAGE=$TOTAL_LIB_COVERAGE" >> $GITHUB_ENV
 
       - name: Create coverage badge
+        if: env.GIST_SECRET
         uses: schneegans/dynamic-badges-action@v1.7.0
         with:
-          auth: ${{ secrets.GIST_SECRET }}
+          auth: ${{ env.GIST_SECRET }}
           gistID: 57742c1b1b60d597a6aba5d5148d728e
           filename: library_coverage_kiln.json
           label: Coverage
           message: ${{ env.TOTAL_LIB_COVERAGE }}
           color: brightgreen
+
+      - name: Skip coverage badge creation
+        if: ${{ !env.GIST_SECRET }}
+        run: echo "GIST_SECRET not set. Skipping coverage badge creation."
