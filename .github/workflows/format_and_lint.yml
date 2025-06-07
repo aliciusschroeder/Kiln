@@ -31,6 +31,8 @@ jobs:
             | grep -v "/dist/" \
             | grep -v "/desktop/build/" \
             | grep -vi "contributing" \
+            | grep -vi ".claude" \
+            | grep -vi ".simone" \
             | xargs misspell -error
 
       - name: Install uv
