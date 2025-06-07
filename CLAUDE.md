@@ -120,3 +120,6 @@ uv run ./build_desktop_app.sh
 - **Frontend**: SvelteKit, TypeScript, TailwindCSS, Vite
 - **Testing**: Pytest (Python), Vitest (TypeScript)
 - **AI/ML**: Support for OpenAI, Anthropic, Google, AWS, Ollama, and many more via LiteLLM
+
+## Memories
+- Execute `date '+%Y-%m-%d %H:%M'` for creation/last updated time

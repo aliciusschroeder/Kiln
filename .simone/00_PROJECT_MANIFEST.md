@@ -1,49 +1,64 @@
 ---
-project_name: Your Project Name
+project_name: Kiln AI
 current_milestone_id: M01
 highest_sprint_in_milestone: S02
 current_sprint_id: S01
 status: active
-last_updated: 2025-01-01 00:00:00
+last_updated: 2025-06-07 02:52
 ---
 
-# Project Manifest: Your Project Name
+# Project Manifest: Kiln AI
 
-This manifest serves as the central reference point for the project. It tracks the current focus and links to key documentation.
+This manifest serves as the central reference point for the Kiln AI project. It tracks the current focus and links to key documentation.
 
 ## 1. Project Vision & Overview
 
-[Describe your project's core vision, purpose, and goals here. What problem does it solve? Who is it for? What makes it unique?]
+Kiln AI is a comprehensive platform for rapid AI prototyping and dataset collaboration. It bridges the gap between technical and non-technical team members by providing intuitive tools for working with AI models while maintaining professional-grade capabilities.
 
-This project follows a milestone-based development approach.
+**Core Values:**
+
+- Privacy-first approach with local data storage
+- Git-compatible file-based architecture for team collaboration
+- Support for 30+ AI providers through unified interfaces
+- Zero-code options for non-technical users with full programmatic access
+
+This project follows a milestone-based development approach with structured requirements and sprint planning.
 
 ## 2. Current Focus
 
-- **Milestone:** M01 - [Your First Milestone Name]
-- **Sprint:** S01 - [Current Sprint Focus]
+- **Milestone:** M01 - Linux AppImage Support
+- **Sprint:** S01 - Research and Build Process Changes
 
 ## 3. Sprints in Current Milestone
 
-### S01 [Sprint Name] (🚧 IN PROGRESS)
+### S01 Research and Build Foundation (🚧 IN PROGRESS)
 
-🚧 [First deliverable or feature]
-📋 [Second deliverable or feature]
-📋 [Third deliverable or feature]
+🚧 Complete AppImage-builder and PyInstaller research (R01)
+📋 Modify Linux build process to use --onedir (R02)
+📋 Create initial AppImage recipe configuration (R03)
 
-### S02 [Sprint Name] (📋 PLANNED)
+### S02 Integration and Deployment (📋 PLANNED)
 
-📋 [First planned deliverable]
-📋 [Second planned deliverable]
-📋 [Third planned deliverable]
+📋 Extend build script with AppImage support (R04)
+📋 Update CI/CD pipeline for automated builds (R05)
+📋 Testing and validation across Linux distributions
 
 ## 4. Key Documentation
 
 - [Architecture Documentation](./01_PROJECT_DOCS/ARCHITECTURE.md)
-- [Current Milestone Requirements](./02_REQUIREMENTS/M01_[Milestone_Name]/)
+- [Current Milestone Requirements](./02_REQUIREMENTS/M01_Linux_AppImage_Support/)
 - [General Tasks](./04_GENERAL_TASKS/)
 
 ## 5. Quick Links
 
-- **Current Sprint:** [S01 Sprint Folder](./03_SPRINTS/S01_M01_[Sprint_Name]/)
-- **Active Tasks:** Check sprint folder for T##_S01_*.md files
+- **Current Sprint:** [S01 Sprint Folder](./03_SPRINTS/S01_M01_Research_Build_Foundation/)
+- **Active Tasks:** Check sprint folder for T##_S01_\*.md files
 - **Project Reviews:** [Latest Review](./10_STATE_OF_PROJECT/)
+
+## 6. Contributing Information
+
+- **Repository:** Public open-source project on GitHub
+- **License:** MIT for core library and server, custom EULA for desktop app
+- **Contribution Guidelines:** See CONTRIBUTING.md for development setup and standards
+- **Code Quality:** All changes must pass `./checks.sh` (includes testing, linting, formatting)
+- **CLA Required:** New contributors must agree to contributor license agreement
