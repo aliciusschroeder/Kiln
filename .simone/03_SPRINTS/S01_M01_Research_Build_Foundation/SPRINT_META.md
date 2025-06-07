@@ -28,6 +28,38 @@ Complete technical research and implement core PyInstaller changes to establish 
 - [ ] Build script changes are tested and documented
 - [ ] Technical notes created for AppImage integration approach
 
+## Sprint Tasks
+
+### T01: Research AppImage Builder Documentation (R01a)
+- Study AppImage-builder documentation and PyQt5 example
+- Analyze Recipe Reference and desktop integration patterns
+- Document SSL certificate handling and desktop integration requirements
+
+### T02: Research PyInstaller OneDir Requirements (R01b)  
+- Study PyInstaller --onedir transition documentation
+- Analyze directory structure and resource resolution requirements
+- Document build script modification requirements
+
+### T03: Analyze Kiln Integration Points (R01c)
+- Analyze Kiln-specific integration points and SSL considerations
+- Study system tray, web UI serving, and resource path patterns
+- Document integration requirements and testing procedures
+
+### T04: Modify PyInstaller Build Configuration (R02)  
+- Change Linux build from --onefile to --onedir in build script
+- Update app/desktop/build_desktop_app.sh configuration
+- Ensure compatibility with existing Windows/macOS builds
+
+### T05: Validate New Build Process
+- Test that --onedir build produces working application
+- Verify all features work (system tray, web UI, SSL certificates)
+- Validate resource loading and path resolution
+
+### T06: Document Implementation Approach
+- Document research findings and build modifications
+- Create technical notes for S02 AppImage integration sprint
+- Establish testing and validation framework documentation
+
 ## Notes / Retrospective Points
 - This sprint establishes the critical foundation that all AppImage work depends on
 - Focus on thorough research to avoid issues in implementation sprint
