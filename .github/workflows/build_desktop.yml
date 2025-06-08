@@ -109,6 +109,8 @@ jobs:
         with:
           name: AppDir
           path: app/desktop/appimage/AppDir
+      - name: Make AppRun executable
+        run: chmod +x AppDir/AppRun
 
       - name: Run AppImage in ${{ matrix.image-label }} container
         run: |
