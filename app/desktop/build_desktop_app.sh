@@ -74,3 +74,9 @@ pyinstaller $(printf %s "$PLATFORM_OPTS")  \
   --hidden-import=litellm \
   --collect-all=litellm \
   --paths=. ./desktop/desktop.py
+
+if [ "$(uname)" == "Linux" ]; then
+  echo "Creating AppImage"
+  cd $APP_DIR/desktop/appimage
+  uv run appimage-builder --recipe AppImageBuilder.yml
+fi
