@@ -28,6 +28,12 @@ class DesktopServer(ThreadedServer):
             on_quit()
 
 
+def is_test_mode():
+    test_mode = os.environ.get("KILN_TEST_MODE")
+    print("KILN_TEST_MODE:", test_mode)
+    return test_mode == "1"
+
+
 def show_studio():
     webbrowser.open("http://localhost:8757")
 
@@ -95,6 +101,20 @@ if __name__ == "__main__":
             # Can't start. Likely a port is already in use. Show the web app instead and exit
             show_studio()
             on_quit()
+            if is_test_mode():
+                sys.exit(1)
+        if is_test_mode():
+            import time
+            time.sleep(1)
+            # Send GET request to /ping expecting a 200 OK response with JSON content "pong"
+            import requests
+            response = requests.get("http://localhost:8757/ping")
+            if response.status_code == 200 and response.json() == "pong":
+                sys.exit(0)
+            else:
+                print("Server did not respond with expected pong response")
+                print("Response:", response.status_code, response.json())
+                sys.exit(1)
         # TK without a window, to get dock events on MacOS
         root = tk.Tk()
         root.title("Kiln")
