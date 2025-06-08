@@ -1,3 +1,5 @@
 
 build/
-
+appimage/AppDir
+appimage/appimage-build
+appimage/*.AppImage*

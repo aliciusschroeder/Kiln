@@ -79,13 +79,17 @@ jobs:
           path: ./app/desktop/build/dist/*
 
   test-fedora-30:
-    name: Test AppRun (Fedora 30)
+    name: Test AppImage (Fedora 30)
     runs-on: ubuntu-22.04
     needs: build
+    defaults:
+      run:
+        working-directory: ./app/desktop/appimage
+
     steps:
       - uses: actions/checkout@v4
 
-      - name: Run AppRun in Fedora 30 container
+      - name: Run AppImage in Fedora 30 container
         run: |
           docker run --rm \
             -e KILN_TEST_MODE=1 \
@@ -93,7 +97,7 @@ jobs:
             -e UID=$(id -u) \
             -e UNAME=$USER \
             -e XDG_DATA_DIRS="/usr/share:/usr/local/share" \
-            -v "${PWD}/app/desktop/appimage/AppDir":/app:ro \
+            -v "${PWD}/AppDir":/app:ro \
             -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
             --cap-add=SYS_PTRACE \
             --workdir /app \
@@ -101,13 +105,17 @@ jobs:
             ./AppRun
 
   test-debian-stable:
-    name: Test AppRun (Debian Stable)
+    name: Test AppImage (Debian Stable)
     runs-on: ubuntu-22.04
     needs: build
+    defaults:
+      run:
+        working-directory: ./app/desktop/appimage
+
     steps:
       - uses: actions/checkout@v4
 
-      - name: Run AppRun in Debian Stable container
+      - name: Run AppImage in Debian Stable container
         run: |
           docker run --rm \
             -e KILN_TEST_MODE=1 \
@@ -115,7 +123,7 @@ jobs:
             -e UID=$(id -u) \
             -e UNAME=$USER \
             -e XDG_DATA_DIRS="/usr/share:/usr/local/share" \
-            -v "${PWD}/app/desktop/appimage/AppDir":/app:ro \
+            -v "${PWD}/AppDir":/app:ro \
             -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
             --cap-add=SYS_PTRACE \
             --workdir /app \
@@ -123,13 +131,17 @@ jobs:
             ./AppRun
 
   test-ubuntu-bionic:
-    name: Test AppRun (Ubuntu Bionic)
+    name: Test AppImage (Ubuntu Bionic)
     runs-on: ubuntu-22.04
     needs: build
+    defaults:
+      run:
+        working-directory: ./app/desktop/appimage
+
     steps:
       - uses: actions/checkout@v4
 
-      - name: Run AppRun in Ubuntu Bionic container
+      - name: Run AppImage in Ubuntu Bionic container
         run: |
           docker run --rm \
             -e KILN_TEST_MODE=1 \
@@ -137,7 +149,7 @@ jobs:
             -e UID=$(id -u) \
             -e UNAME=$USER \
             -e XDG_DATA_DIRS="/usr/share:/usr/local/share" \
-            -v "${PWD}/app/desktop/appimage/AppDir":/app:ro \
+            -v "${PWD}/AppDir":/app:ro \
             -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
             --cap-add=SYS_PTRACE \
             --workdir /app \
