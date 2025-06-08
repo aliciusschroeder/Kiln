@@ -1,27 +1,23 @@
-#!/usr/bin/env python3
-"""
-Resize an input PNG to multiple sizes and output to subfolders.
-
-Usage:
-  python3 build_icons.py icon_512.png 16 32 64 128 [--out-dir OUTPUT_DIR]
-
-This generates:
-  OUTPUT_DIR/16x16/kiln-ai.png
-  OUTPUT_DIR/32x32/kiln-ai.png
-  ...
-"""
-
+import argparse
 import os
 import sys
-import argparse
+
 from PIL import Image
 
+
 def parse_args():
-    parser = argparse.ArgumentParser(description="Generate resized icons from a source image.")
+    parser = argparse.ArgumentParser(
+        description="Generate resized icons from a source image."
+    )
     parser.add_argument("src", help="Source image file (e.g. icon_512.png)")
-    parser.add_argument("sizes", nargs="+", type=int, help="Sizes to generate (e.g. 16 32 64)")
-    parser.add_argument("--out-dir", default=".", help="Output root directory (default: current dir)")
+    parser.add_argument(
+        "sizes", nargs="+", type=int, help="Sizes to generate (e.g. 16 32 64)"
+    )
+    parser.add_argument(
+        "--out-dir", default=".", help="Output root directory (default: current dir)"
+    )
     return parser.parse_args()
+
 
 def main():
     args = parse_args()
@@ -43,6 +39,7 @@ def main():
         out_path = os.path.join(subdir, "kiln-ai.png")
         resized.save(out_path)
         print(f"✔ Saved: {out_path}")
+
 
 if __name__ == "__main__":
     main()

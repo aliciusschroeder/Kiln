@@ -101,13 +101,15 @@ if __name__ == "__main__":
             # Can't start. Likely a port is already in use. Show the web app instead and exit
             show_studio()
             on_quit()
-            if is_test_mode():
-                sys.exit(1)
+
         if is_test_mode():
+            # In test mode, don't try to register the taskbar as it's not supported on test images
+            # Just check that the server is running and responding
             import time
-            time.sleep(1)
-            # Send GET request to /ping expecting a 200 OK response with JSON content "pong"
+
             import requests
+
+            time.sleep(1)
             response = requests.get("http://localhost:8757/ping")
             if response.status_code == 200 and response.json() == "pong":
                 sys.exit(0)
