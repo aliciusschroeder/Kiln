@@ -1,0 +1,18 @@
+[Desktop Entry]
+Version=1.5
+Type=Application
+Name=Kiln AI
+GenericName=AI Development Platform
+Comment=Rapid AI Prototyping and Dataset Collaboration Tool
+Exec=Kiln %F
+Icon=kiln-ai
+Terminal=false
+Categories=Development;IDE;Science;ArtificialIntelligence;
+Keywords=AI;Machine Learning;Fine-tuning;Dataset;LLM;GPT;Claude;Ollama;Synthetic Data;Evaluation;
+MimeType=application/x-kiln-project;
+StartupNotify=true
+StartupWMClass=com.kiln.KilnAI
+SingleMainWindow=true
+X-AppImage-Name=Kiln AI
+X-AppImage-Version=2.8.1
+X-AppImage-Arch=x86_64
