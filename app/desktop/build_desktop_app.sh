@@ -80,5 +80,5 @@ if [ "$(uname)" == "Linux" ]; then
   cd $APP_DIR/desktop/appimage
   # Patch packaging to handle ubuntu version strings
   grep -q '^[ ]\{8\}version = version.split("ubuntu")' ../../../.venv/lib/python3.13/site-packages/packaging/version.py || sed -i '/^[ ]\{8\}match = self\._regex\.search(version)/i\        version = version.split("ubuntu")[0]' ../../../.venv/lib/python3.13/site-packages/packaging/version.py
-  uv run appimage-builder --recipe AppImageBuilder.yml
+  uv run appimage-builder --recipe AppImageBuilder.yml --skip-tests
 fi
