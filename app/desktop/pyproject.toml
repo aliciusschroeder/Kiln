@@ -9,10 +9,10 @@ dependencies = [
     "pystray>=0.19.5",
     "pyinstaller>=6.14",
     "scipy>=1.15.2",
-    "appimage-builder==1.1.1.dev32+g2709a3b",
+    "appimage-builder==1.1.1.dev64+gbf6123e",
 ]
 
 
 [tool.uv.sources]
 kiln-server = { workspace = true }
-appimage-builder = { git = "https://github.com/AppImageCrafters/appimage-builder.git", rev = "Continuous" }
+appimage-builder = { git = "https://github.com/AppImageCrafters/appimage-builder.git" }
