@@ -30,6 +30,24 @@ jobs:
       - name: Set up Python using GH python version
         run: uv venv --python 3.13 --python-preference only-system
 
+      - name: Install AppImage Builder dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            binutils \
+            coreutils \
+            desktop-file-utils \
+            fakeroot \
+            fuse \
+            libgdk-pixbuf2.0-dev \
+            patchelf \
+            python3-setuptools \
+            squashfs-tools \
+            strace \
+            util-linux \
+            zsync
+
       - name: Install the project
         run: uv sync
 
@@ -84,6 +102,13 @@ jobs:
         with:
           name: AppDir
           path: ./app/desktop/appimage/AppDir
+
+      - name: Upload AppImage
+        if: runner.os == 'Linux'
+        uses: actions/upload-artifact@v4
+        with:
+          name: AppImage
+          path: ./app/desktop/appimage/Kiln*
 
   test-appimage:
     name: Test AppImage (${{ matrix.image-label }})
