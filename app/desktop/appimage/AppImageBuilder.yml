@@ -75,3 +75,4 @@ AppImage:
   # update-information: 'gh-releases-zsync|Kiln-AI|Kiln|latest|kiln-*x86_64.AppImage.zsync'
   update-information: guess
   # sign-key: None
+  comp: xz
