@@ -50,7 +50,9 @@ jobs:
             squashfs-tools \
             strace \
             util-linux \
-            zsync
+            zsync \
+            appstream \
+            desktop-file-utils
 
       - name: Install the project
         run: uv sync
@@ -107,6 +109,13 @@ jobs:
         with:
           name: kiln-desktop-${{ runner.os }}-${{ runner.arch }}
           path: ./app/desktop/build/dist/*
+
+      - name: AppImage Desktop Files Validation
+        if: matrix.os == 'ubuntu-22.04'
+        working-directory: ./app/desktop/appimage
+        run: |
+          desktop-file-validate ./AppDir/kiln-ai.desktop
+          appstreamcli validate-tree ./AppDir
 
       - name: Upload AppDir (tar)
         if: matrix.os == 'ubuntu-22.04'
