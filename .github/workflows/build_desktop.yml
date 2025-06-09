@@ -144,27 +144,23 @@ jobs:
       # - name: Install Xvfb
       #   run: sudo apt-get update && sudo apt-get install -y xvfb
 
-      # - name: Start virtual X server
-      #   run: |
-      #     Xvfb :99 -screen 0 1920x1080x24 &
-      #     echo "DISPLAY=:99" >> $GITHUB_ENV
+      - name: Start virtual X server
+        run: Xvfb :99 -screen 0 1920x1280x24 > /dev/null 2>&1 &
 
       - name: Extract AppDir
         run: tar -xzpf AppDir.tar.gz
 
       - name: Run AppImage in ${{ matrix.image-label }} container
-        uses: coactions/setup-xvfb@v1
-        with:
-          run: |
-            docker run --rm \
-              -e KILN_TEST_MODE=1 \
-              -e DISPLAY=$DISPLAY \
-              -e UID=$(id -u) \
-              -e UNAME=$USER \
-              -e XDG_DATA_DIRS="/usr/share:/usr/local/share" \
-              -v "${PWD}/AppDir":/app:ro \
-              -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
-              --cap-add=SYS_PTRACE \
-              --workdir /app \
-              ${{ matrix.image }} \
-              ./AppRun
+        run: |
+          docker run --rm \
+            -e KILN_TEST_MODE=1 \
+            -e DISPLAY=:99 \
+            -e UID=$(id -u) \
+            -e UNAME=$USER \
+            -e XDG_DATA_DIRS="/usr/share:/usr/local/share" \
+            -v "${PWD}/AppDir":/app:ro \
+            -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
+            --cap-add=SYS_PTRACE \
+            --workdir /app \
+            ${{ matrix.image }} \
+            ./AppRun
